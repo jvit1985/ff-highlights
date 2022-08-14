@@ -1,4 +1,6 @@
 const draftBtn = document.querySelector("#draft");
+const select = document.querySelector("#dropdown");
+
 let players = [
     "Jonathan Taylor",
     "Christian McCaffrey",
@@ -401,4 +403,24 @@ let players = [
     "Andrew Jacas"
 ]
 
+//append player list to options in dropdown
+function displayPlayers() {
+    let playerLength = players.length;
+
+    for (let i = 0; i < playerLength; i++) {
+        var optn = players[i];
+        var el = document.createElement("option");
+        el.textContent = optn;
+        el.value = optn;
+        select.append(el);
+    }
+}
+
+function draftPlayer() {
+    console.log("button clicked");
+}
+
 draftBtn.addEventListener("click", draftPlayer);
+
+//run on load
+displayPlayers();
