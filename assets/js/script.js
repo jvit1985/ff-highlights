@@ -409,14 +409,15 @@ function displayPlayers() {
 
     for (let i = 0; i < playerLength; i++) {
         var optn = players[i];
-        var el = document.createElement("option");
-        el.textContent = optn;
-        el.value = optn;
-        select.append(el);
+        var playerEl = document.createElement("option");
+        playerEl.textContent = optn;
+        playerEl.value = optn;
+        select.append(playerEl);
     }
 }
 
 function draftPlayer() {
+    console.log(select.value);
     console.log("button clicked");
 }
 
