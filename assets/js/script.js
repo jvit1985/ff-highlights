@@ -1,6 +1,6 @@
 const draftBtn = document.querySelector("#draft");
 const select = document.querySelector("#dropdown");
-const API_KEY = process.env.YOUTUBE_API;
+const API_KEY = "AIzaSyC5dZoaUi1EoYQIByQdRCV6S6iT7eBTaZE";
 
 let players = [
     "Jonathan Taylor",
