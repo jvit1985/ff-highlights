@@ -1,6 +1,5 @@
 const draftBtn = document.querySelector("#draft");
 const select = document.querySelector("#dropdown");
-const API_KEY = "AIzaSyC5dZoaUi1EoYQIByQdRCV6S6iT7eBTaZE";
 
 let players = [
     "Jonathan Taylor",
@@ -155,11 +154,11 @@ let players = [
     "Tyler Allgeier",
     "Nyheim Hines",
     "Khalil Herbert",
-    "Buffalo Bills DST",
+    "Buffalo Bills Defense",
     "Rondale Moore",
     "Marlon Mack",
     "Daniel Jones",
-    "Tampa Bay Buccaneers DST",
+    "Tampa Bay Buccaneers Defense",
     "Evan Engram",
     "Mac Jones",
     "Sony Michel",
@@ -168,11 +167,11 @@ let players = [
     "Zach Wilson",
     "J.D. McKissic",
     "Logan Thomas",
-    "San Francisco 49ers DST",
+    "San Francisco 49ers Defense",
     "Corey Davis",
     "Jahan Dotson",
     "Austin Hooper",
-    "Indianapolis Colts DST",
+    "Indianapolis Colts Defense",
     "Carson Wentz",
     "Mecole Hardman",
     "Van Jefferson",
@@ -182,12 +181,12 @@ let players = [
     "D'Onta Foreman",
     "Robbie Anderson",
     "Justin Tucker",
-    "Denver Broncos DST",
-    "New England Patriots DST",
+    "Denver Broncos Defense",
+    "New England Patriots Defense",
     "Nico Collins",
-    "New Orleans Saints DST",
+    "New Orleans Saints Defense",
     "Jared Goff",
-    "Los Angeles Rams DST",
+    "Los Angeles Rams Defense",
     "Christian Watson",
     "Hayden Hurst",
     "Deshaun Watson",
@@ -199,21 +198,21 @@ let players = [
     "George Pickens",
     "Matt Gay",
     "Davis Mills",
-    "Dallas Cowboys DST",
+    "Dallas Cowboys Defense",
     "Kendrick Bourne",
     "Baker Mayfield",
     "Daniel Carlson",
     "Donovan Peoples-Jones",
     "Zamir White",
     "Evan McPherson",
-    "Los Angeles Chargers DST",
+    "Los Angeles Chargers Defense",
     "Jamison Crowder",
     "Jalen Tolbert",
-    "Miami Dolphins DST",
+    "Miami Dolphins Defense",
     "Boston Scott",
-    "Green Bay Packers DST",
+    "Green Bay Packers Defense",
     "Curtis Samuel",
-    "Kansas City Chiefs DST",
+    "Kansas City Chiefs Defense",
     "KJ Hamler",
     "Kenyan Drake",
     "Parris Campbell",
@@ -221,14 +220,14 @@ let players = [
     "Harrison Butker",
     "A.J. Green",
     "Matt Prater",
-    "Cleveland Browns DST",
+    "Cleveland Browns Defense",
     "Tyrion Davis-Price",
     "Brevin Jordan",
-    "Baltimore Ravens DST",
+    "Baltimore Ravens Defense",
     "Chubba Hubbard",
-    "Philadelphia Eagles DST",
+    "Philadelphia Eagles Defense",
     "David Bell",
-    "Pittsburgh Steelers DST",
+    "Pittsburgh Steelers Defense",
     "Wan'Dale Robinson",
     "Sterling Shepard",
     "Rodrigo Blankenship",
@@ -241,7 +240,7 @@ let players = [
     "Damien Williams",
     "Brandon McManus",
     "Nick Folk",
-    "Arizona Cardinals DST",
+    "Arizona Cardinals Defense",
     "D'Ernest Johnson",
     "Adam Trautman",
     "Trey Sermon",
@@ -252,16 +251,16 @@ let players = [
     "Jake Elliott",
     "Mo Alie-Cox",
     "Byron Pringle",
-    "Cincinnati Bengals DST",
+    "Cincinnati Bengals Defense",
     "Jeff Wilson Jr.",
-    "Tennessee Titans DST",
+    "Tennessee Titans Defense",
     "Myles Gaskin",
     "Dan Arnold",
     "William Fuller V",
     "Bryan Edwards",
     "Dustin Hopkins",
     "Jerick McKinnon",
-    "Carolina Panthers DST",
+    "Carolina Panthers Defense",
     "Braxton Berrios",
     "Isaiah McKenzie",
     "Rex Burkhead",
@@ -272,14 +271,14 @@ let players = [
     "Marquez Callaway",
     "Odell Beckham Jr.",
     "C.J. Uzomah",
-    "Minnesota Vikings DST",
+    "Minnesota Vikings Defense",
     "Chris Boswell",
     "Randall Cobb",
     "Mike Davis",
     "Sammy Watkins",
     "Cameron Brate",
     "Matt Breida",
-    "Chicago Bears DST",
+    "Chicago Bears Defense",
     "Mason Crosby",
     "Cedrick Wilson Jr.",
     "Romeo Doubs",
@@ -288,23 +287,23 @@ let players = [
     "Phillip Lindsay",
     "Trey McBride",
     "Graham Gano",
-    "Washington Commanders DST",
+    "Washington Commanders Defense",
     "Nelson Agholor",
     "Jason Myers",
     "Greg Joseph",
-    "New York Giants DST",
+    "New York Giants Defense",
     "Eno Benjamin",
     "Ke'Shawn Vaughn",
     "Cairo Santos",
-    "Seattle Seahawks DST",
-    "New York Jets DST",
+    "Seattle Seahawks Defense",
+    "New York Jets Defense",
     "Tre'Quan Smith",
     "Randy Bullock",
     "Ka'imi Fairbairn",
     "Drew Lock",
     "Josh Reynolds",
     "Jimmy Garoppolo",
-    "Jacksonville Jaguars DST",
+    "Jacksonville Jaguars Defense",
     "Kenny Pickett",
     "Darius Slayton",
     "Quez Watkins",
@@ -358,16 +357,16 @@ let players = [
     "Latavius Murray",
     "James Proche II",
     "John Metchie III",
-    "Las Vegas Raiders DST",
+    "Las Vegas Raiders Defense",
     "Jelani Woods",
     "Devontae Booker",
     "Foster Moreau",
     "Demarcus Robinson",
-    "Atlanta Falcons DST",
+    "Atlanta Falcons Defense",
     "Keaontay Ingram",
     "Devonta Freeman",
     "Amari Rodgers",
-    "Detroit Lions DST",
+    "Detroit Lions Defense",
     "Cade Otton",
     "Cade York",
     "Kyle Philips",
@@ -383,7 +382,7 @@ let players = [
     "Taysom Hill",
     "Dee Eskridge",
     "Teddy Bridgewater",
-    "Houston Texans DST",
+    "Houston Texans Defense",
     "Malik Willis",
     "Jauan Jennings",
     "Laquon Treadwell",
@@ -402,7 +401,7 @@ let players = [
     "Carlos Martinez",
     "Eddy Pineiro",
     "Andrew Jacas"
-]
+];
 
 //append player list to options in dropdown
 function displayPlayers() {
@@ -417,67 +416,35 @@ function displayPlayers() {
     }
 }
 
-function draftPlayer() {
-    console.log(select.value);
-    console.log("button clicked");
-    
-    const apiUrl = "https://youtube.googleapis.com/youtube/v3/search?q=Nick%20Chubb$key=" + API_KEY;
-
-    fetch(apiUrl)
-    .then(function(response) {
-        if(response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-            });
-        }
-    });
-    // "https://www.googleapis.com/youtube/v3"
-//     'GET https://youtube.googleapis.com/youtube/v3/search?q=Nick%20Chubb&key=[YOUR_API_KEY] HTTP/1.1'
-
-// 'Authorization: Bearer [YOUR_ACCESS_TOKEN]'
-// 'Accept: application/json'
-//  <script src="https://apis.google.com/js/api.js"></script>
-// <script>
-//   /**
-//    * Sample JavaScript code for youtube.search.list
-//    * See instructions for running APIs Explorer code samples locally:
-//    * https://developers.google.com/explorer-help/code-samples#javascript
-//    */
-
-// // function authenticate() {
-// //     return gapi.auth2.getAuthInstance()
-// //         .signIn({scope: "https://www.googleapis.com/auth/youtube.force-ssl"})
-// //         .then(function() { console.log("Sign-in successful"); },
-// //               function(err) { console.error("Error signing in", err); });
-// //   }
-// //   function loadClient() {
-// //     gapi.client.setApiKey("YOUR_API_KEY");
-// //     return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
-// //         .then(function() { console.log("GAPI client loaded for API"); },
-// //               function(err) { console.error("Error loading GAPI client for API", err); });
-// //   }
-// //   // Make sure the client is loaded and sign-in is complete before calling this method.
-// //   function execute() {
-// //     return gapi.client.youtube.search.list({
-// //       "q": "Nick Chubb"
-// //     })
-// //         .then(function(response) {
-// //                 // Handle the results here (response.result has the parsed body).
-// //                 console.log("Response", response);
-// //               },
-// //               function(err) { console.error("Execute error", err); });
-// //   }
-// //   gapi.load("client:auth2", function() {
-// //     gapi.auth2.init({client_id: "YOUR_CLIENT_ID"});
-// //   });
-// // </script>
-// // <button onclick="authenticate().then(loadClient)">authorize and load</button>
-// // <button onclick="execute()">execute</button>
-
-
+function onPlayerReady(event) {
+    event.target.playVideo();
 }
 
-draftBtn.addEventListener("click", draftPlayer);
+function getVideo() {
+    $.ajax({
+        type: 'GET',
+        url: 'https://www.googleapis.com/youtube/v3/search',
+        data: {
+            key: "",
+            q: select.value + 'highlights',
+            part: 'snippet',
+            maxResults: 1,
+            type: 'video',
+            videoEmbeddable: true,
+        },
+        success: function(data) {
+            // code to open in embedded iframe
+            $('iframe').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId);
+            // code to open in new window
+            // window.open('https:www.youtube.com/watch?v=' + data.items[0].id.videoId, '_blank');
+        },
+        error: function(response){
+            console.log('Response Failed');
+        }
+    });
+}
+
+draftBtn.addEventListener("click", getVideo);
 
 //run on load
 displayPlayers();
