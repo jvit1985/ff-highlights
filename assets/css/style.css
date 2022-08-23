@@ -1,0 +1,30 @@
+#selection {
+    padding-bottom: 10px;
+}
+
+h3 {
+    padding-right: 10px;
+}
+
+iframe {
+    margin: auto;
+    display: block;
+}
+
+.container {
+    font-size: larger;
+    padding-top: 20px;
+}
+
+#teams {
+    padding: none;
+}
+
+.col-1 {
+    font-weight: bold;
+}
+
+.col {
+    padding: 25px;
+    border: 1px solid black;
+}
