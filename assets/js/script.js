@@ -420,6 +420,14 @@ function onPlayerReady(event) {
     event.target.playVideo();
 }
 
+// function addtoBoard() {
+//     //add player from select.value to column, may need to assign an id and then pass to corresponding id in board
+// }
+
+// function addtoTeam() {
+//     //add player from select.value to assign based on id values
+// }
+
 function getVideo() {
     $.ajax({
         type: 'GET',
@@ -442,9 +450,14 @@ function getVideo() {
             console.log('Response Failed');
         }
     });
+    // addtoBoard();
 }
 
 draftBtn.addEventListener("click", getVideo);
 
 //run on load
 displayPlayers();
+
+$(document).ready(function() {
+    $('.dropdown').select2();
+});

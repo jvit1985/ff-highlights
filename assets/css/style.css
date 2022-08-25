@@ -7,6 +7,10 @@ h3 {
     padding-right: 10px;
 }
 
+button {
+    margin-left: 5px;
+}
+
 iframe {
     margin: auto;
     display: block;
