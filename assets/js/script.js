@@ -398,9 +398,9 @@ let players = [
     "Riley Patterson",
     "Brett Maher",
     "Lirim Hajrullahu",
-    "Carlos Martinez",
     "Eddy Pineiro",
-    "Andrew Jacas"
+    "Andrew Jacas",
+    "KaVontae Turpin"
 ];
 
 //append player list to options in dropdown
@@ -429,6 +429,7 @@ function onPlayerReady(event) {
 // }
 
 function getVideo() {
+    let draftedPlayer = select.value
     $.ajax({
         type: 'GET',
         url: 'https://www.googleapis.com/youtube/v3/search',
@@ -451,12 +452,22 @@ function getVideo() {
         }
     });
     // addtoBoard();
+    //remove player from list after drafted
+    removeDraftedPlayer(draftedPlayer);
 }
+
+function removeDraftedPlayer (name) {
+    let deleteIndex = players.indexOf(name);
+    if (deleteIndex !== -1) {
+        players.splice(deleteIndex, 1);
+    }
+    displayPlayers();
+}
+
+displayPlayers();
 
 draftBtn.addEventListener("click", getVideo);
 
-//run on load
-displayPlayers();
 
 $(document).ready(function() {
     $('.dropdown').select2();
