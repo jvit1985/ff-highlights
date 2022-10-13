@@ -416,8 +416,9 @@ function displayPlayers() {
     }
 }
 
-function onPlayerReady(event) {
-    event.target.playVideo();
+async function onPlayerReady (event) {
+    let result = await event.target.playVideo();
+    return result;
 }
 
 // function addtoBoard() {
@@ -428,41 +429,52 @@ function onPlayerReady(event) {
 //     //add player from select.value to assign based on id values
 // }
 
-function getVideo() {
+const getVideo = async function () {
     let draftedPlayer = select.value
-    $.ajax({
+    let playerData = await $.ajax({
         type: 'GET',
         url: 'https://www.googleapis.com/youtube/v3/search',
         data: {
-            key: "AIzaSyC5dZoaUi1EoYQIByQdRCV6S6iT7eBTaZE",
-            q: select.value + 'highlights',
+            key: "",
+            q: draftedPlayer + 'highlights',
             part: 'snippet',
             maxResults: 1,
             type: 'video',
             videoEmbeddable: true,
         },
-        success: function(data) {
+        success: async function(data) {
             // code to open in embedded iframe
-            $('iframe').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId);
+            let video = await $('iframe').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId);
             // code to open in new window
             // window.open('https:www.youtube.com/watch?v=' + data.items[0].id.videoId, '_blank');
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(video);
+                }, 1000);
+            });
         },
         error: function(response){
             console.log('Response Failed');
         }
     });
+
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(playerData);
+        }, 1000);
+    });
     // addtoBoard();
     //remove player from list after drafted
-    removeDraftedPlayer(draftedPlayer);
-}
+    // removeDraftedPlayer(draftedPlayer);
+};
 
-function removeDraftedPlayer (name) {
-    let deleteIndex = players.indexOf(name);
-    if (deleteIndex !== -1) {
-        players.splice(deleteIndex, 1);
-    }
-    displayPlayers();
-}
+// function removeDraftedPlayer (name) {
+//     let deleteIndex = players.indexOf(name);
+//     if (deleteIndex !== -1) {
+//         players.splice(deleteIndex, 1);
+//     }
+//     displayPlayers();
+// }
 
 displayPlayers();
 
