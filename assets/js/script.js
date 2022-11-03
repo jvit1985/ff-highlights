@@ -1,5 +1,6 @@
 const draftBtn = document.querySelector("#draft");
 const select = document.querySelector("#dropdown");
+const pickedPlayerEl = document.querySelector("#pick1");
 
 let players = [
     {id: 0, name: "Jonathan Taylor", team: "Indianapolis Colts", position: "RB", bye: 14},
@@ -408,11 +409,11 @@ function displayPlayers() {
     let playerLength = players.length;
 
     for (let i = 0; i < playerLength; i++) {
-        var optn = players[i].name;
-        var playerEl = document.createElement("option");
-        playerEl.textContent = optn;
-        playerEl.value = optn;
-        select.append(playerEl);
+        var playerName = document.createElement("option");
+        let name = players[i].name;
+        playerName.textContent = name;
+        playerName.value = name;
+        select.append(playerName);
     }
 }
 
@@ -421,21 +422,17 @@ async function onPlayerReady (event) {
     return result;
 }
 
-// function addtoBoard() {
-//     //add player from select.value to column, may need to assign an id and then pass to corresponding id in board
-// }
-
 // function addtoTeam() {
 //     //add player from select.value to assign based on id values
 // }
 
 const getVideo = async function () {
-    let draftedPlayer = select.value
+    let draftedPlayer = select.value;
     let playerData = await $.ajax({
         type: 'GET',
         url: 'https://www.googleapis.com/youtube/v3/search',
         data: {
-            key: "",
+            key: "AIzaSyC5dZoaUi1EoYQIByQdRCV6S6iT7eBTaZE",
             q: draftedPlayer + 'highlights',
             part: 'snippet',
             maxResults: 1,
@@ -463,10 +460,28 @@ const getVideo = async function () {
             resolve(playerData);
         }, 1000);
     });
-    // addtoBoard();
     //remove player from list after drafted
     // removeDraftedPlayer(draftedPlayer);
 };
+
+function addToBoard() {
+    //add player from select.value to column
+    let pickedPlayerName = document.createElement("p");
+    pickedPlayerName.textContent = "Jonathan Taylor"
+    let pickedPlayerBye = document.createElement("p");
+    pickedPlayerBye.textContent = 14;
+    let pickedPlayerTeam = document.createElement("p");
+    pickedPlayerTeam.textContent = "Indianapolis Colts";
+    let pickedPlayerPosition = document.createElement("p");
+    pickedPlayerPosition.textContent = "RB";
+    pickedPlayerEl.appendChild(pickedPlayerName);
+    pickedPlayerEl.appendChild(pickedPlayerPosition);
+    pickedPlayerEl.appendChild(pickedPlayerTeam);
+    pickedPlayerEl.appendChild(pickedPlayerBye);
+
+};
+
+addToBoard();
 
 // function removeDraftedPlayer (name) {
 //     let deleteIndex = players.indexOf(name);
