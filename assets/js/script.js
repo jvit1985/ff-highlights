@@ -1,6 +1,5 @@
 const draftBtn = document.querySelector("#draft");
 const select = document.querySelector("#dropdown");
-// const pickedPlayerEl = document.querySelector("#pick" + count);
 let count = 1;
 
 let players = [
@@ -423,10 +422,6 @@ async function onPlayerReady (event) {
     return result;
 }
 
-// function addtoTeam() {
-//     //add player from select.value to assign based on id values
-// }
-
 const getVideo = function () {
     let draftedPlayer = select.value;
     addToBoard(draftedPlayer);
@@ -434,7 +429,7 @@ const getVideo = function () {
         type: 'GET',
         url: 'https://www.googleapis.com/youtube/v3/search',
         data: {
-            key: "AIzaSyC5dZoaUi1EoYQIByQdRCV6S6iT7eBTaZE",
+            key: "",
             q: draftedPlayer + 'highlights',
             part: 'snippet',
             maxResults: 1,
@@ -493,7 +488,9 @@ function addToBoard(draftedPlayer) {
     count++;
 };
 
-// addToBoard();
+// function addtoTeam() {
+//     //add player from select.value to assign based on id values
+// }
 
 // function removeDraftedPlayer (name) {
 //     let deleteIndex = players.indexOf(name);
