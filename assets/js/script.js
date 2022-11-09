@@ -1,6 +1,7 @@
 const draftBtn = document.querySelector("#draft");
 const select = document.querySelector("#dropdown");
-const pickedPlayerEl = document.querySelector("#pick1");
+// const pickedPlayerEl = document.querySelector("#pick" + count);
+let count = 1;
 
 let players = [
     {id: 0, name: "Jonathan Taylor", team: "Indianapolis Colts", position: "RB", bye: 14},
@@ -426,9 +427,10 @@ async function onPlayerReady (event) {
 //     //add player from select.value to assign based on id values
 // }
 
-const getVideo = async function () {
+const getVideo = function () {
     let draftedPlayer = select.value;
-    let playerData = await $.ajax({
+    addToBoard(draftedPlayer);
+    let playerData = $.ajax({
         type: 'GET',
         url: 'https://www.googleapis.com/youtube/v3/search',
         data: {
@@ -439,9 +441,9 @@ const getVideo = async function () {
             type: 'video',
             videoEmbeddable: true,
         },
-        success: async function(data) {
+        success: function(data) {
             // code to open in embedded iframe
-            let video = await $('iframe').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId);
+            let video = $('iframe').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId);
             // code to open in new window
             // window.open('https:www.youtube.com/watch?v=' + data.items[0].id.videoId, '_blank');
             return new Promise((resolve) => {
@@ -464,24 +466,34 @@ const getVideo = async function () {
     // removeDraftedPlayer(draftedPlayer);
 };
 
-function addToBoard() {
-    //add player from select.value to column
-    let pickedPlayerName = document.createElement("p");
-    pickedPlayerName.textContent = "Jonathan Taylor"
-    let pickedPlayerBye = document.createElement("p");
-    pickedPlayerBye.textContent = 14;
-    let pickedPlayerTeam = document.createElement("p");
-    pickedPlayerTeam.textContent = "Indianapolis Colts";
-    let pickedPlayerPosition = document.createElement("p");
-    pickedPlayerPosition.textContent = "RB";
-    pickedPlayerEl.appendChild(pickedPlayerName);
-    pickedPlayerEl.appendChild(pickedPlayerPosition);
-    pickedPlayerEl.appendChild(pickedPlayerTeam);
-    pickedPlayerEl.appendChild(pickedPlayerBye);
-
+function addToBoard(draftedPlayer) {
+    console.log(count);
+    console.log(draftedPlayer);
+    for (let i = 0; i < players.length; i++) {
+    //Need to filter player by select.value so that the correct player is put on the board
+    //once player is added to the board increase the count by 1 and repeat process.
+    if (draftedPlayer == players[i].name) {
+        let pickedPlayerEl = document.querySelector("#pick" + count);
+        let id = players[i].id;
+        //add player from select.value to column
+        let pickedPlayerName = document.createElement("p");
+        pickedPlayerName.textContent = players[id].name;
+        let pickedPlayerBye = document.createElement("p");
+        pickedPlayerBye.textContent = players[id].bye;
+        let pickedPlayerTeam = document.createElement("p");
+        pickedPlayerTeam.textContent = players[id].team;
+        let pickedPlayerPosition = document.createElement("p");
+        pickedPlayerPosition.textContent = players[id].position;
+        pickedPlayerEl.appendChild(pickedPlayerName);
+        pickedPlayerEl.appendChild(pickedPlayerPosition);
+        pickedPlayerEl.appendChild(pickedPlayerTeam);
+        pickedPlayerEl.appendChild(pickedPlayerBye);
+    }
+}    
+    count++;
 };
 
-addToBoard();
+// addToBoard();
 
 // function removeDraftedPlayer (name) {
 //     let deleteIndex = players.indexOf(name);
