@@ -1,6 +1,7 @@
 const draftBtn = document.querySelector("#draft");
 const select = document.querySelector("#dropdown");
 let count = 1;
+let teamId = 1;
 
 let players = [
     {id: 0, name: "Jonathan Taylor", team: "Indianapolis Colts", position: "RB", bye: 14},
@@ -424,7 +425,6 @@ async function onPlayerReady (event) {
 
 const getVideo = function () {
     let draftedPlayer = select.value;
-    console.log(draftedPlayer);
     addToBoard(draftedPlayer);
     let playerData = $.ajax({
         type: 'GET',
@@ -463,8 +463,6 @@ const getVideo = function () {
 };
 
 function addToBoard(draftedPlayer) {
-    console.log(count);
-    console.log(draftedPlayer);
     for (let i = 0; i < players.length; i++) {
     //Need to filter player by select.value so that the correct player is put on the board
     //once player is added to the board increase the count by 1 and repeat process.
@@ -486,7 +484,7 @@ function addToBoard(draftedPlayer) {
         pickedPlayerEl.appendChild(pickedPlayerBye);
         switch (pickedPlayerPosition.textContent) {
             case "RB":
-                pickedPlayerEl.style.background = "blue";
+                pickedPlayerEl.style.background = "aqua";
                 break;   
             case "WR":
                 pickedPlayerEl.style.background = "green";
@@ -503,14 +501,26 @@ function addToBoard(draftedPlayer) {
             case "K":
                 pickedPlayerEl.style.background = "pink";
         }
+    addtoTeam(teamId, id, pickedPlayerName.textContent, pickedPlayerPosition.textContent, pickedPlayerTeam.textContent, pickedPlayerBye.textContent);
     }
-}
+}   
+    //need to change teamId to count backwards after 12, then forward after then next 12, etc.
+        //trigger a boolean to count backward or reset based on true or false
+        //true boolean counts forward starting at 0
+        //false boolean counts backward starting at 12
     count++;
+    teamId++;
 };
 
-// function addtoTeam() {
-//     //add player from select.value to assign based on id values
-// }
+function addtoTeam(teamId, id, name, position, team, bye) {
+    console.log (teamId);
+    console.log(id);
+    console.log(name);
+    console.log(position);
+    console.log(team);
+    console.log(bye);
+    //add player from select.value to assign based on id values
+}
 
 // function removeDraftedPlayer (name) {
 //     let deleteIndex = players.indexOf(name);
