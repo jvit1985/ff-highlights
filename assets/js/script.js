@@ -2,6 +2,7 @@ const draftBtn = document.querySelector("#draft");
 const select = document.querySelector("#dropdown");
 let count = 1;
 let teamId = 1;
+let countUp = true;
 
 let players = [
     {id: 0, name: "Jonathan Taylor", team: "Indianapolis Colts", position: "RB", bye: 14},
@@ -430,7 +431,7 @@ const getVideo = function () {
         type: 'GET',
         url: 'https://www.googleapis.com/youtube/v3/search',
         data: {
-            key: "AIzaSyC5dZoaUi1EoYQIByQdRCV6S6iT7eBTaZE",
+            key: "",
             q: draftedPlayer + 'highlights',
             part: 'snippet',
             maxResults: 1,
@@ -501,15 +502,30 @@ function addToBoard(draftedPlayer) {
             case "K":
                 pickedPlayerEl.style.background = "pink";
         }
-    addtoTeam(teamId, id, pickedPlayerName.textContent, pickedPlayerPosition.textContent, pickedPlayerTeam.textContent, pickedPlayerBye.textContent);
-    }
+        if (countUp) {
+            if (teamId <= 12) {
+                addtoTeam(teamId, id, pickedPlayerName.textContent, pickedPlayerPosition.textContent, pickedPlayerTeam.textContent, pickedPlayerBye.textContent);
+                teamId++;
+            } else {
+                countUp = false;
+                teamId = 12;
+                addtoTeam(teamId, id, pickedPlayerName.textContent, pickedPlayerPosition.textContent, pickedPlayerTeam.textContent, pickedPlayerBye.textContent);
+                teamId --;
+            }
+        } else {
+            if (teamId >= 1) {
+                addtoTeam(teamId, id, pickedPlayerName.textContent, pickedPlayerPosition.textContent, pickedPlayerTeam.textContent, pickedPlayerBye.textContent);
+                teamId--;
+            } else {
+                countUp = true;
+                teamId = 1;
+                addtoTeam(teamId, id, pickedPlayerName.textContent, pickedPlayerPosition.textContent, pickedPlayerTeam.textContent, pickedPlayerBye.textContent);
+                teamId++;
+            }
+        }
+}
 }   
-    //need to change teamId to count backwards after 12, then forward after then next 12, etc.
-        //trigger a boolean to count backward or reset based on true or false
-        //true boolean counts forward starting at 0
-        //false boolean counts backward starting at 12
     count++;
-    teamId++;
 };
 
 function addtoTeam(teamId, id, name, position, team, bye) {
